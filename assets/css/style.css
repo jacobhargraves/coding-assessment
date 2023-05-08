@@ -31,12 +31,25 @@ header {
     flex-wrap: wrap;
 }
 
-.welcomeContentContainer {
-    display:flex;
-    justify-content: center;
+.startBoxContainer {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10rem;
 }
 
-.welcomeContainer {
+.startBox {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
+    width: 40rem;
+    align-items: center;
+}
+
+.questionText {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -51,8 +64,8 @@ h1 {
     color: blueviolet;
 }
 
-#howToPlay {
-    margin: 1rem;
+.startText {
+    margin-bottom: 1rem;
 }
 
 #startBtn {
