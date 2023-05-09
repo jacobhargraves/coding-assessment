@@ -31,6 +31,11 @@ function showQuetions(index) {
     }
 }
 
+// hides contentContainer and shows time up
+function sendMessage() {
+    
+}
+
 //starts timer at 60 seconds and refreshes every second
 function startTimer() {
     var timeLeft = 60;
