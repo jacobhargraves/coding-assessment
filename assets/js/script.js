@@ -13,12 +13,11 @@ const scoreDiv = document.querySelector(".score");
 // begins quiz and hides startBoxContainer
 startBtn.addEventListener("click" , function () {
     startBoxContainer.classList.add("hidden"); // hides start box container message
-    showQuetions(0);
+    showQuetions(questionCount);
     startTimer();
 });
 
 var questionCount = 0;
-var questionNumber = 1;
 
 // function to show questions when startBtn is clicked
 function showQuetions(index) {
@@ -33,18 +32,17 @@ function showQuetions(index) {
     options.innerHTML = optionTag;
 
     let buttonTag = '<button id="nextBtnID">Next<button>';
-    nextBtn.innerHTML = buttonTag;
+    nextBtn.innerHTML = buttonTag; // displays the next button
 
     const choice = options.querySelectorAll(".choice");
 
-    for(i=0; i < choice.length; i++){
+    for(i=0; i < choice.length; i++){ // this creates an onclick attribut for each coice
        choice[i].setAttribute("onclick", "evaluateAnswer(this)");
     }
 
-    nextBtn.addEventListener('click', function (){
+    nextBtn.addEventListener('click', function (){ // iterates through questions when next button is clicked
         if (questionCount < questions.length -1) {
             questionCount++;
-            questionNumber++;
             showQuetions(questionCount);
             evaluate.classList.add("hidden"); // hides if answer is correct or incorrect when pressed
         }
@@ -82,13 +80,13 @@ function evaluateAnswer(answer) {
     var correctAnswer = questions[questionCount].answer;
     // var eachOption = options.children.length;
 
-    if (answerInput == correctAnswer) {
+    if (answerInput == correctAnswer) { //displays if user selects the correct answer
         score += 1;
         let evaluateTag = "<h3 id='correct'>Correct!<h3>";
         evaluate.innerHTML = evaluateTag;
     }
     else {
-        let evaluateTag = "<h3 id='incorrect'>Incorrect ☹️<h3>";
+        let evaluateTag = "<h3 id='incorrect'>Incorrect ☹️<h3>"; // states incorrect if user selects wrong answer
         evaluate.innerHTML = evaluateTag;
     }
     evaluate.classList.remove("hidden"); // removes hidden css class so evaluation can be displayed
