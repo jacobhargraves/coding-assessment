@@ -108,6 +108,28 @@ h2 {
     transform: scale(1.1);
 }
 
+#nextBtnID {
+    cursor: pointer;
+    margin: 6px;
+    background-color: white; 
+    color: black;
+    border-radius: 5px;
+    padding: 5px;
+    transition: all 0.1s ease-in-out;
+    width: 7vw;
+}
+#nextBtnID:hover{
+    transform: scale(1.1);
+}
+
+.evaluate #correct{
+    color: rgb(39, 249, 39);
+}
+
+.evaluate #incorrect {
+    color: rgb(255, 0, 115);
+}
+
 .hidden {
     display: none;
 }
