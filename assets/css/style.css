@@ -122,6 +122,14 @@ h2 {
     transform: scale(1.1);
 }
 
+.evaluate #correct{
+    color: rgb(39, 249, 39);
+}
+
+.evaluate #incorrect {
+    color: rgb(255, 0, 115);
+}
+
 .hidden {
     display: none;
 }
