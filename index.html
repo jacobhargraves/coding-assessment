@@ -45,12 +45,19 @@
         <div class="resultsHeader"></div>
         <div class="scoreResults"></div>
         <form class="userResultsForm">
-            <label for="fname">Enter Your Initials:</label><br>
-            <input class="initialBox" type="text" id="fname" name="fname"><br>
-            <input class="startBtn" type="submit">
+            <label for="initials">Enter Your Initials:</label><br>
+            <input id="initialBox" type="text" name="initials"><br>
+            <input class="startBtn" id="submit" type="submit">
         </form>
+        <h3>Open console and local storage to see high Scores</h3>
     </section>
     <script src="./assets/js/questions.js"></script>
     <script src="./assets/js/script.js"></script>
+
+    <!-- High Scores Box-->
+    <section class="highScoreContainer hidden">
+        <div class="highScoreHeader"></div>
+        <div class="highScoreList"></div>
+    </section>
 </body>
 </html>

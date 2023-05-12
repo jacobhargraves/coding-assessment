@@ -12,7 +12,10 @@ const scoreDiv = document.querySelector(".score");
 const resultsHeader = document.querySelector(".resultsHeader");
 const scoreResults = document.querySelector(".scoreResults");
 const resultsContainer = document.querySelector(".resultsContainer");
-
+const submitBtn = document.querySelector("#submit");
+const highScoreContainer = document.querySelector(".highScoreContainer");
+const highScoreList = document.querySelector(".highScoreList");
+const initialBox = document.querySelector("#initialBox");
 
 // begins quiz and hides startBoxContainer
 startBtn.addEventListener("click" , function () {
@@ -21,9 +24,9 @@ startBtn.addEventListener("click" , function () {
     startTimer();
 });
 
+// function to show questions when startBtn is clicked
 var questionCount = 0;
 
-// function to show questions when startBtn is clicked
 function showQuetions(index) {
     let scoreTag = '<div class="scoreDisplay">' + 'Score: ' + score + '</div>';
     scoreDiv.innerHTML = scoreTag;
@@ -45,6 +48,7 @@ function showQuetions(index) {
     }
 }
 
+// button eventlistener to iterate through questions
 nextBtn.addEventListener('click', function (){ // iterates through questions when next button is clicked
     if (questionCount < questions.length -1) {
         questionCount++;
@@ -53,19 +57,17 @@ nextBtn.addEventListener('click', function (){ // iterates through questions whe
     } else {
         displayResults();
         contentContainer.classList.add("hidden");
+        timeLeft = 0;
     }
 })
 
 // hides contentContainer and shows time up
 function sendMessage() {
-    // contentContainer.classList.add("hidden");
-    alert('Time is Up!');
     displayResults();
 }
-
+//starts timer at 60 seconds and refreshes every second
 var timeLeft = 60;
 
-//starts timer at 60 seconds and refreshes every second
 function startTimer() {
     var timerInterval = setInterval(function() {
         timeLeft--;
@@ -82,6 +84,7 @@ function startTimer() {
 
 var score = 0;
 
+// evaluates if the user's answer is correct or incorrect
 function evaluateAnswer(answer) {
     var answerInput = answer.textContent;
     var correctAnswer = questions[questionCount].answer;
@@ -100,9 +103,27 @@ function evaluateAnswer(answer) {
     evaluate.classList.remove("hidden"); // removes hidden css class so evaluation can be displayed
 }
 
+// Show results function
 function displayResults() {
     resultsContainer.classList.remove("hidden");
     let resultsHeaderTag = "<h1>Assessment Results</h1>";
     resultsHeader.innerHTML = resultsHeaderTag;
     scoreResults.textContent = score;
 }
+
+function displayHighScores() {
+    console.log(Object.entries(localStorage));
+    for ( var i = 0, len = localStorage.length; i < len; ++i ) { // struggling to get the high score list and box to show high scores
+        console.log(localStorage.getItem( localStorage.key( i )));
+      }
+}
+
+// function to store high scores
+
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    
+    // set new submission to local storage 
+    localStorage.setItem(initialBox.value.trim(), JSON.stringify(score));
+    displayHighScores();
+  });
